@@ -1,20 +1,36 @@
 package com.example.diseofitfocuss
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val btnStartWorkout = findViewById<Button>(R.id.btnStartWorkout)
+        val cardCalendar = findViewById<LinearLayout>(R.id.cardCalendar)
+        val cardRoutines = findViewById<LinearLayout>(R.id.cardRoutines)
+        val cardHistory = findViewById<LinearLayout>(R.id.cardHistory)
+
+        btnStartWorkout.setOnClickListener {
+            Toast.makeText(this, "Iniciando Entrenamiento...", Toast.LENGTH_SHORT).show()
+        }
+
+        cardCalendar.setOnClickListener {
+            Toast.makeText(this, "Abriendo Calendario", Toast.LENGTH_SHORT).show()
+        }
+
+        cardRoutines.setOnClickListener {
+            Toast.makeText(this, "Abriendo Gestión de Rutinas", Toast.LENGTH_SHORT).show()
+        }
+
+        cardHistory.setOnClickListener {
+            Toast.makeText(this, "Abriendo Historial de Entrenamientos", Toast.LENGTH_SHORT).show()
         }
     }
 }
+
