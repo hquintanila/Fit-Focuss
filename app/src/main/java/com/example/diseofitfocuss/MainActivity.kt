@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         cardRoutines.setOnClickListener {
-            Toast.makeText(this, "Abriendo Gestión de Rutinas", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, RoutinesActivity::class.java))
         }
 
         cardHistory.setOnClickListener {
@@ -41,14 +41,13 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavigation() {
         val bottomNav = findViewById<LinearLayout>(R.id.bottomNav)
 
-        // HOME (Ya estamos aquí, no necesita Intent)
+        // HOME
         bottomNav.findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
-            // Ya estás en MainActivity
         }
 
         // RUTINA
         bottomNav.findViewById<LinearLayout>(R.id.navRutina).setOnClickListener {
-            Toast.makeText(this, "Sección de Rutinas", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, RoutinesActivity::class.java))
         }
 
         // CALENDARIO

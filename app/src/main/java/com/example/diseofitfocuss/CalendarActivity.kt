@@ -1,7 +1,7 @@
 package com.example.diseofitfocuss
 
-import android.os.Bundle
 import android.content.Intent
+import android.os.Bundle
 import android.widget.CalendarView
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -35,12 +35,12 @@ class CalendarActivity : AppCompatActivity() {
 
         // RUTINA
         bottomNav.findViewById<LinearLayout>(R.id.navRutina).setOnClickListener {
-            Toast.makeText(this, "Sección de Rutinas", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, RoutinesActivity::class.java))
+            finish()
         }
 
         // CALENDARIO
         bottomNav.findViewById<LinearLayout>(R.id.navCalendario).setOnClickListener {
-            // Ya estás en CalendarActivity
         }
 
         // PERFIL
