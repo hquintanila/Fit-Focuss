@@ -23,26 +23,32 @@ class LoginActivity : AppCompatActivity() {
             val password = etPassword.text.toString().trim()
 
             if (email.isEmpty()) {
-                etEmail.error = "Ingresa tu correo o usuario"
+                etEmail.error = "Ingresa tu Correo o Usuario"
                 return@setOnClickListener
             }
 
-            // Validación hardcodeada: Acepta cualquier usuario, pero contraseña debe ser "123"
+            if (password.isEmpty()) {
+                etPassword.error = "Ingresa tu contraseña"
+                return@setOnClickListener
+            }
+
+            // Validación hardcodeada: Contraseña clave "123"
             if (password == "123") {
-                Toast.makeText(this, "¡Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "¡Inicio de Sesión Exitoso!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
                 etPassword.error = "Contraseña incorrecta (Usa: 123)"
-                Toast.makeText(this, "Credencial inválida. La clave es 123", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Credencial Inválida. La clave es 123", Toast.LENGTH_SHORT).show()
             }
         }
 
+        // Ir a Registro cerrando la vista actual de Login
         tvGoToRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }
-

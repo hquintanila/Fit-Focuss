@@ -1,15 +1,11 @@
 package com.example.diseofitfocuss
 
-import android.os.Bundle
 import android.content.Intent
+import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.activity.enableEdgeToEdge
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-
 
 class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,12 +27,33 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
-        // Navegación Inferior
-        findViewById<LinearLayout>(R.id.bottomNav).apply {
-            findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
-                startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
-                finish()
-            }
+        // Configurar la navegación inferior completa
+        setupBottomNavigation()
+    }
+
+    private fun setupBottomNavigation() {
+        val bottomNav = findViewById<LinearLayout>(R.id.bottomNav)
+
+        // HOME
+        bottomNav.findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+
+        // RUTINA
+        bottomNav.findViewById<LinearLayout>(R.id.navRutina).setOnClickListener {
+            Toast.makeText(this, "Sección de Rutinas", Toast.LENGTH_SHORT).show()
+        }
+
+        // CALENDARIO
+        bottomNav.findViewById<LinearLayout>(R.id.navCalendario).setOnClickListener {
+            startActivity(Intent(this, CalendarActivity::class.java))
+            finish()
+        }
+
+        // PERFIL
+        bottomNav.findViewById<LinearLayout>(R.id.navPerfil).setOnClickListener {
+            // Ya estás en ProfileActivity
         }
     }
 }

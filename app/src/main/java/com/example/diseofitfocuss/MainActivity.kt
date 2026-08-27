@@ -1,5 +1,6 @@
 package com.example.diseofitfocuss
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
@@ -16,12 +17,13 @@ class MainActivity : AppCompatActivity() {
         val cardRoutines = findViewById<LinearLayout>(R.id.cardRoutines)
         val cardHistory = findViewById<LinearLayout>(R.id.cardHistory)
 
+        // 1. EVENTOS DE LAS TARJETAS DEL DASHBOARD
         btnStartWorkout.setOnClickListener {
             Toast.makeText(this, "Iniciando Entrenamiento...", Toast.LENGTH_SHORT).show()
         }
 
         cardCalendar.setOnClickListener {
-            Toast.makeText(this, "Abriendo Calendario", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, CalendarActivity::class.java))
         }
 
         cardRoutines.setOnClickListener {
@@ -31,6 +33,32 @@ class MainActivity : AppCompatActivity() {
         cardHistory.setOnClickListener {
             Toast.makeText(this, "Abriendo Historial de Entrenamientos", Toast.LENGTH_SHORT).show()
         }
+
+        // 2. EVENTOS DE LA BARRA DE NAVEGACIÓN INFERIOR
+        setupBottomNavigation()
+    }
+
+    private fun setupBottomNavigation() {
+        val bottomNav = findViewById<LinearLayout>(R.id.bottomNav)
+
+        // HOME (Ya estamos aquí, no necesita Intent)
+        bottomNav.findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
+            // Ya estás en MainActivity
+        }
+
+        // RUTINA
+        bottomNav.findViewById<LinearLayout>(R.id.navRutina).setOnClickListener {
+            Toast.makeText(this, "Sección de Rutinas", Toast.LENGTH_SHORT).show()
+        }
+
+        // CALENDARIO
+        bottomNav.findViewById<LinearLayout>(R.id.navCalendario).setOnClickListener {
+            startActivity(Intent(this, CalendarActivity::class.java))
+        }
+
+        // PERFIL
+        bottomNav.findViewById<LinearLayout>(R.id.navPerfil).setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
     }
 }
-
